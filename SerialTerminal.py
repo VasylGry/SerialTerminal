@@ -1,13 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-try:
-	from tkinter import *
-except:
-	from Tkinter import *
-from tkFileDialog import asksaveasfilename,askopenfilename
-from tkMessageBox import *
+
+from tkinter import *
+from tkinter.filedialog import asksaveasfilename,askopenfilename
+from tkinter.messagebox import *
 from serial import Serial
-from serial.tools.list_ports import comports
+from serial.tools.list_ports import *
 import time, sys, json
 from os.path import expanduser,isfile
 
@@ -84,7 +82,7 @@ class Application(Tk):
 			data = text
 		data += self.endline.get().replace(" ","")
 		if self.serial != None:
-			self.serial.write(bytes(data))
+			self.serial.write(bytes(data, encoding='utf8'))
 	def Reciver(self):
 		if self.serial != None:
 			rx = []
@@ -169,7 +167,8 @@ class Application(Tk):
 		editmenu.add_command(label=_("Clear"), command=self.onClear)
 		self.menubar.add_cascade(label=_("Edit"), menu=editmenu)
 		portmenu = Menu(self.menubar, tearoff=0)
-		for n, (port, desc, hwid) in enumerate(sorted(comports()), 1):
+		ports = comports()
+		for n, (port, desc, hwid) in enumerate(sorted(ports), 1):
 			#sys.stderr.write('--- {:2}: {:20} {!r}\n'.format(n, port, desc))
 			portmenu.add_radiobutton(label=port , value=port, variable=self.port, command=self.openPort)
 		portmenu.add_separator()
