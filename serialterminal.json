@@ -1,0 +1,10 @@
+{
+    "endline": " ",
+    "port": "COM6",
+    "baud": 115200,
+    "echo": 1,
+    "hexmode": 0,
+    "dir": 1,
+    "autoscroll": 1,
+    "sendhex": 0
+}
