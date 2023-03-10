@@ -124,14 +124,14 @@ class Application(Tk):
 		config['dir'] = self.dir.get()
 		config['autoscroll'] = self.autoscroll.get()
 		config['sendhex'] = self.sendhex.get()
-		cfg = open(expanduser("~/.serialterminal.json"),"w")
+		cfg = open(expanduser("./serialterminal.json"),"w")
 		cfg.write(json.dumps(config, indent = 4))
 		cfg.close()
 	def createWidgets(self):
 		config = self.setDefaults()
-		if isfile(expanduser("~/.serialterminal.json")):
+		if isfile(expanduser("./serialterminal.json")):
 			try:
-				config = json.loads(open(expanduser("~/.serialterminal.json")).read())
+				config = json.loads(open(expanduser("./serialterminal.json")).read())
 			except:
 				pass
 		self.serial = None
