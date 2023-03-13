@@ -1,8 +1,8 @@
 {
     "endline": " ",
-    "port": "COM6",
+    "port": "",
     "baud": 115200,
-    "echo": 1,
+    "echo": 0,
     "hexmode": 0,
     "dir": 1,
     "autoscroll": 1,

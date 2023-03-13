@@ -90,7 +90,7 @@ class Application(Tk):
 				rx.append(ord(self.serial.read(1)))
 				time.sleep(0.001)
 			if rx != []:
-				if self.dir.get(): self.text.insert(INSERT, ">>> ", "in")
+#				if self.dir.get(): self.text.insert(INSERT, ">>> ", "in")
 				for s in rx:
 					if self.hexmode.get():
 						self.text.insert(INSERT, "%02X "%s)
